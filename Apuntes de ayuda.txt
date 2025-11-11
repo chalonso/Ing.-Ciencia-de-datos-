@@ -1,0 +1,98 @@
+#Acceder a la carpeta donde tengo mi codigos de la terminal de cursor
+cd "C:\Users\Rentas 25481\Documents\Cursor"
+
+entrar a un entorno
+.\test_env\Scripts\activate
+
+salir del entorno
+deactivate
+
+instalar paquetes
+pip install paquete (numpy matplolibt etc)
+
+
+codigo contador.py
+
+necesito ruta de texto
+
+Coneción Cursor al Github repositorio de Cursor
+PS C:\Users\Rentas 25481\Documents\Cursor\proyecto_git> .\env_1\Scripts\activate
+git init
+
+Añadir un remoto al repositorio de GitHub de Cursor
+
+git remote add origin https://github.com/chalonso/Cursor.git
+
+
+Subir un cogigo 
+🧭 PASO 1. Confirmar que estás en la carpeta correcta
+
+En tu terminal de Cursor, ejecuta:
+
+pwd
+
+
+Debería mostrar algo como:
+
+C:\Users\Rentas 25481\Documents\Cursor\proyecto_git
+
+
+Si sí estás ahí, seguimos adelante.
+
+🧩 PASO 2. Crear un entorno virtual (si no existe)
+
+Vamos a mantener las dependencias separadas:
+
+python -m venv env
+
+
+Luego lo activas:
+
+.\env\Scripts\activate
+
+
+Verás algo así al inicio del prompt:
+
+(env) PS C:\Users\Rentas 25481\Documents\Cursor\proyecto_git>
+
+💻 PASO 3. Crear un pequeño programa en Python
+
+Vamos a practicar con algo simple, por ejemplo un contador de palabras.
+
+En Cursor, crea un nuevo archivo llamado contador_palabras.py
+
+Pega este código:
+
+# contador_palabras.py
+# Programa simple para contar palabras en un texto ingresado por el usuario
+
+def contar_palabras(texto):
+    palabras = texto.split()
+    return len(palabras)
+
+if __name__ == "__main__":
+    texto = input("Escribe una frase o párrafo: ")
+    total = contar_palabras(texto)
+    print(f"El texto tiene {total} palabras.")
+
+
+Guarda el archivo y pruébalo:
+
+python contador_palabras.py
+
+📁 PASO 4. Confirmar los cambios con Git
+
+Vamos a guardar el nuevo código en tu repositorio local:
+
+git add .
+git commit -m "Agrega programa contador de palabras"
+
+☁️ PASO 5. Subir los cambios a GitHub
+
+Ahora súbelos al remoto:
+
+git push
+
+
+Esto actualizará tu repo https://github.com/chalonso/Cursor
+ con el nuevo archivo.  
