@@ -120,3 +120,7 @@ python equinox.py
 │── LPE/
 │   ├── equinox.py
 │── README.md   ← este archivo
+
+![Python version](https://img.shields.io/badge/Python-3.10-blue)
+![Status](https://img.shields.io/badge/Status-Active-brightgreen)
+![License](https://img.shields.io/badge/License-MIT-yellow)
