@@ -1,1 +1,3 @@
 gym_nip,nombre,ape_paterno,ape_materno,nacimiento,sexo,telefono,dia_registro,paquete,cont_emergencias,tel_emergencia,parentesco,estatus
+1,Christopher,Perez,Alonso,08/10/93,m,5624178595,14/11/25,oro,Dinorah,5689234585,Esposa,ACTIVO
+2,Luis,Lopez,Martinez,05/05/20,m,568985698,14/11/25,plata,Juan,7854129656,Padre,ACTIVO

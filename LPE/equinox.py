@@ -1,6 +1,7 @@
 # Revisión del código: Correcciones y mejoras en la gestión del DataFrame y paso de referencias
 
 import pandas as pd
+import os
 
 COLUMNAS = [
     "gym_nip", "nombre", "ape_paterno", "ape_materno",
@@ -9,10 +10,13 @@ COLUMNAS = [
     "parentesco", "estatus"
 ]
 
-df_usuarios = pd.DataFrame(columns=COLUMNAS)
+# Lee el CSV de usuarios si existe, sino crea un DataFrame vacío
+if os.path.exists("usuarios.csv"):
+    df_usuarios = pd.read_csv("usuarios.csv")
+else:
+    df_usuarios = pd.DataFrame(columns=COLUMNAS)
 
 def menu(df):
-
     while True:
         print("\n====== MENÚ PRINCIPAL ======")
         print("1. Registro de usuario")
@@ -36,7 +40,6 @@ def menu(df):
             break
         else:
             print("❌ Opción no válida, intente de nuevo.")
-
     return df
 
 def registro(df):
@@ -44,14 +47,14 @@ def registro(df):
     while True:
         nuevo_usuario = {}
 
-        # Asegura que el gym_nip sea int y único
+        # Generar gym_nip incremental único
         if df.empty:
             gym_nip = 1
         else:
             gym_nip = int(df["gym_nip"].astype(int).max()) + 1
         nuevo_usuario["gym_nip"] = gym_nip
 
-        # Captura solo datos relevantes
+        # Solicitar datos del usuario excepto campos protegidos
         for col in COLUMNAS:
             if col not in ["gym_nip", "estatus"]:
                 nuevo_usuario[col] = input(f"{col.replace('_', ' ').capitalize()}: ")
@@ -59,12 +62,14 @@ def registro(df):
         nuevo_usuario["estatus"] = "ACTIVO"
 
         df = pd.concat([df, pd.DataFrame([nuevo_usuario])], ignore_index=True)
+        df.to_csv("usuarios.csv", index=False)
 
         print(f"✅ Usuario registrado correctamente. Gym NIP asignado: {gym_nip}")
 
         continuar = input("¿Desea registrar otro usuario? (s/n): ").strip().lower()
         if continuar != "s":
             break
+
     return df
 
 def baja(df):
@@ -80,6 +85,7 @@ def baja(df):
             idx = df.index[df["gym_nip"].astype(int) == nip][0]
             if df.at[idx, "estatus"] == "ACTIVO":
                 df.at[idx, "estatus"] = "INACTIVO"
+                df.to_csv("usuarios.csv", index=False)
                 print("🛑 Usuario cambiado a estado INACTIVO correctamente.")
             else:
                 print("⚠️ El usuario ya está inactivo.")
@@ -89,6 +95,7 @@ def baja(df):
         continuar = input("¿Desea eliminar otro usuario? (s/n): ").strip().lower()
         if continuar != "s":
             break
+
     return df
 
 def modificacion(df):
@@ -99,6 +106,7 @@ def modificacion(df):
         except ValueError:
             print("❌ El valor ingresado no es un número válido.")
             continue
+
         if nip in df["gym_nip"].astype(int).values:
             idx = df.index[df["gym_nip"].astype(int) == nip][0]
             print("Columnas disponibles para modificar:")
@@ -110,11 +118,12 @@ def modificacion(df):
                 if seleccion == "0":
                     break
                 try:
-                    seleccion = int(seleccion)
-                    if 1 <= seleccion <= len(columnas_modificables):
-                        columna_a_modificar = columnas_modificables[seleccion - 1]
+                    seleccion_int = int(seleccion)
+                    if 1 <= seleccion_int <= len(columnas_modificables):
+                        columna_a_modificar = columnas_modificables[seleccion_int - 1]
                         nuevo_valor = input(f"Ingrese el nuevo valor para '{columna_a_modificar}': ")
                         df.at[idx, columna_a_modificar] = nuevo_valor
+                        df.to_csv("usuarios.csv", index=False)
                         print(f"✅ '{columna_a_modificar}' actualizado correctamente.")
                     else:
                         print("Selección inválida. Intente de nuevo.")
@@ -125,9 +134,11 @@ def modificacion(df):
                     break
         else:
             print("❌ No existe un usuario con ese gym_nip.")
+
         continuar = input("¿Desea modificar otro usuario? (s/n): ").strip().lower()
         if continuar != "s":
             break
+
     return df
 
 def consulta(df):

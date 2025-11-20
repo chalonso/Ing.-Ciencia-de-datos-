@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="logo.png" width="200">
+</p>
 🏋️‍♂️ Sistema de Gestión de Usuarios — GYM Equinox
 Proyecto de Lógica y Programación Estructurada (Python)
 
@@ -124,3 +127,5 @@ python equinox.py
 ![Python version](https://img.shields.io/badge/Python-3.10-blue)
 ![Status](https://img.shields.io/badge/Status-Active-brightgreen)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
+
+
