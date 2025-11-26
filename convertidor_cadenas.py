@@ -7,9 +7,9 @@ def convertir_cadena():
     opcion = input("Opción: ")
 
     if opcion == "1":
-        print("Resultado:", texto.upper())
+        print("El texto se convierte a minusculas:", texto.upper())
     elif opcion == "2":
-        print("Resultado:", texto.lower())
+        print("El Texto se convierte a mayusculas:", texto.lower())
     else:
         print("Opción no válida")
 
