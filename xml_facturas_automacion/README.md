@@ -18,6 +18,9 @@ Eliminar la captura manual en el área contable y reducir errores de transcripci
 Python 3
 
 Tkinter (interfaz gráfica)
+<p align="center">
+  <img src="logo.png" width="200">
+</p>
 
 xml.etree.ElementTree para parseo de XML
 
