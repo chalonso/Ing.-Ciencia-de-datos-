@@ -73,7 +73,7 @@ def get_connection():
 
 Clona el repo:
 
-git clone https://github.com/chalonso/Ing.-Ciencia-de-datos-.git
+git clone [https://github.com/chalonso/Ing.-Ciencia-de-datos-.git](https://github.com/chalonso/Ing.-Ciencia-de-datos-/tree/main/xml_facturas_automacion)
 
 
 Instala dependencias:
