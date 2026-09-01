@@ -1,0 +1,123 @@
+CREATE TABLE facturas (
+    id SERIAL PRIMARY KEY,
+
+    -- Datos administrativos
+    unidad_operativa TEXT,
+    num_comprobacion TEXT,
+    responsable_del_gasto TEXT,
+    tipo_comprobacion TEXT,
+    contrato TEXT,
+
+    -- CFDI Relacionado (ej. cuando esta factura se relaciona con otra)
+    cfdi_relacionado_uuid TEXT,
+    cfdi_relacionado_serie TEXT,
+    cfdi_relacionado_folio TEXT,
+
+    -- Datos principales
+    uuid TEXT,
+    fecha TIMESTAMP,
+    serie TEXT,
+    folio TEXT,
+	tipo_comprobante TEXT,
+    rfc_emisor TEXT,
+    nombre_emisor TEXT,
+    rfc_receptor TEXT,
+    nombre_receptor TEXT,
+
+
+    claveprodserv TEXT,
+    cantidad NUMERIC,
+    claveunidad TEXT,
+    descripcion TEXT,
+    valorunitario NUMERIC,
+    importe NUMERIC,
+    descuento_concepto NUMERIC,
+	
+    -- Impuestos trasladados
+    iva_16 NUMERIC,
+    iva_8 NUMERIC,
+    iva_4 NUMERIC,
+    iva_0 NUMERIC,
+    iva_exento NUMERIC,
+	iva_no_objeto NUMERIC,
+    ieps_cuota NUMERIC,
+    ieps_tasa NUMERIC,
+	ieps_millar NUMERIC,
+	ish_tasa NUMERIC,
+	ish_importe NUMERIC,
+
+    -- Retenciones
+    retencion_isr_10 NUMERIC,
+	retencion_isr_125 NUMERIC,
+    retencion_iva NUMERIC,
+    retencion_ieps NUMERIC,
+
+    subtotal_comprobante NUMERIC,
+    descuento_global NUMERIC,
+    iva_total_comprobante NUMERIC,
+    total_comprobante NUMERIC,
+
+    fecha_carga TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE notas_credito (
+    id SERIAL PRIMARY KEY,
+
+      -- Datos administrativos
+    unidad_operativa TEXT,
+    num_comprobacion TEXT,
+    responsable_del_gasto TEXT,
+    tipo_comprobacion TEXT,
+    contrato TEXT,
+
+    -- CFDI Relacionado (ej. cuando esta factura se relaciona con otra)
+    cfdi_relacionado_uuid TEXT,
+    cfdi_relacionado_serie TEXT,
+    cfdi_relacionado_folio TEXT,
+
+    -- Datos principales
+    uuid TEXT,
+    fecha TIMESTAMP,
+    serie TEXT,
+    folio TEXT,
+	tipo_comprobante TEXT,
+    rfc_emisor TEXT,
+    nombre_emisor TEXT,
+    rfc_receptor TEXT,
+    nombre_receptor TEXT,
+
+
+    claveprodserv TEXT,
+    cantidad NUMERIC,
+    claveunidad TEXT,
+    descripcion TEXT,
+    valorunitario NUMERIC,
+    importe NUMERIC,
+    descuento_concepto NUMERIC,
+	
+    -- Impuestos trasladados
+    iva_16 NUMERIC,
+    iva_8 NUMERIC,
+    iva_4 NUMERIC,
+    iva_0 NUMERIC,
+    iva_exento NUMERIC,
+	iva_no_objeto NUMERIC,
+    ieps_cuota NUMERIC,
+    ieps_tasa NUMERIC,
+	ieps_millar NUMERIC,
+	ish_tasa NUMERIC,
+	ish_importe NUMERIC,
+
+    -- Retenciones
+    retencion_isr_10 NUMERIC,
+	retencion_isr_125 NUMERIC,
+    retencion_iva NUMERIC,
+    retencion_ieps NUMERIC,
+
+    subtotal_comprobante NUMERIC,
+    descuento_global NUMERIC,
+    iva_total_comprobante NUMERIC,
+    total_comprobante NUMERIC,
+
+    fecha_carga TIMESTAMP DEFAULT NOW()
+);
